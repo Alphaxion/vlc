@@ -33,17 +33,17 @@
 
 
 
-\part{Introduction}
+\chapter{Introduction}
 
-\chapter{About Northumbria University}
+\section{About Northumbria University}
 
 This chapter aims at presenting the environment in which this internship has taken place.
 
-\section{Newcastle}
+\subsection{Newcastle}
 
 Northumbria University is located in Newcastle upon Tyne in the North East of England. Newcastle is one of the most populous cities of the UK, with 293,000 inhabitants. Newcastle has a massive amount of students, and two universities, Newcastle University and Northumbria University.
 
-\section{Northumbria University}
+\subsection{Northumbria University}
 
 Northumbria University is a former Polytechnic, established in 1969, and became the University of Northumbria in 1992. Northumbria University employs more than 3,200 people and offers approximately 500 study programmes. The university has two large campuses, City Campus East and City Campus West.
 
@@ -51,7 +51,7 @@ City Camus East is home to the Schools of Law, Design, and the Newcastle Busines
 
 I worked in the Faculty of Engineering and Environment, more precisely in the Department of Mathematics, Physics and Electrical Engineering. This department focuses on a wide range of issues, from statistics to complex and nonlinear phenomena, astrophysics to smart materials, and communications to renewable energy.
 
-\section{Optical communications research group}
+\subsection{Optical communications research group}
 
 The Optical Communications Research Group (OCRG) is one of the few leading research groups in the UK and EU currently working on optical communications.
 In 2011, they presented their first experimental demonstration of a VLC link using organic LEDs. They reached a potential data rate of 2.15 Mb/s.
@@ -70,11 +70,11 @@ My supervisor for this internship was Dr Hoa Le Minh. He is specialized in photo
 
 
 
-\chapter{Context}
+\section{Context}
 
 This chapter presents the reason why visible light communication (VLC) is the preferred solution and how it could be useful in car to car communications.
 
-\section{Existing data transfer technologies}
+\subsection{Existing data transfer technologies}
 
 In the last years, there has been more and more portable devices and the quantities of data to transfer between them has also grown drastically. However, creating ad hoc networks between portable devices is not a simple task. Short-range data interchange links can be created with various technologies.
 
@@ -84,7 +84,7 @@ Wireless radio frequency communications, as used in 4G networks, also present se
 
 Wireless optical links, however, do not require RF circuitry but cheap LEDs, are not licensed, unlike the RF band, so there are no licensing fees, can be easily contained by placing opaque boundaries. Their only problem compared to RF links for short range communications is that mobility is very limited since any opaque boundary would cut the link.
 
-\section{Application to car to car communications}
+\subsection{Application to car to car communications}
 
 Wireless communications between vehicles could greatly improve security on the road. For example, safety messages could be transmitted from the traffic infrastructure to the vehicles and between the vehicles. Moreover, this system could increase the vehicle awareness of its surroundings or facilitate traffic flow.
 
@@ -106,15 +106,15 @@ Since LEDs are already used in traffic infrastructures and in the vehicle lightn
 
 
 
-\chapter{Introduction to Visible Light Communications (VLC)}
+\section{Introduction to Visible Light Communications (VLC)}
 
 This chapter introducts the concepts necessary to understand how a VLC system works.
 
-\section{Architecture}
+\subsection{Architecture}
 
 A VLC system consists of an emitter that modulates the light produced by a LED and a receiverthat extract the modulated signal from the light detected by a photodiode. They are connected by a VLC channel which is a source of noise and attenuation.
 
-\section{Emitter}
+\subsection{Emitter}
 
 The emitter transforms data into a frame that can be sent by light. The emitter must be capable to emit light and to transfer data at the same time, without inducing flickering.
 
@@ -126,7 +126,7 @@ The second one is the laser diode (LD): it produces an intense beam of light whi
 
 LDs can operate at pulserates in the GHz range, while LEDs are limited to the MHz range. A LD ages faster and its characteristics change more with temperature. Because of this, a circuit is required to stabilize the LD. Moreover, LEDs are way cheaper to produce. Finally, LDs can be dangerous for the eyes and filters must be used to diffuse the output light. For most of the applications, LEDs are prefered for their simplicity.
 
-\section{Receiver}
+\subsection{Receiver}
 
 The receiver transforms the light into an electrical signal then demodulate it. The receiver has the most influence on the performances of the VLC system because it determines the communication range. It is subject to many interferences caused by ambient lights so a filter is often used to discard the frequency that are not sent by the LED. Narrowing the field of view of the receiver is another possibilty to increase the SNR.
 
@@ -136,7 +136,7 @@ Avalanches photodiodes (APD) have a photocurrent greater than 1 because of the a
 
 Most indoors links use PIN photodiodes. Outdoors links that require better sensivity may use APDs instead.
 
-\section{Channel}
+\subsection{Channel}
 
 The channel contains numerous sources of optical noise, like the sun, artificial lights, or even rain or snow. These, together with the low signal especially at long distances, affect the SNR.
 
@@ -154,14 +154,16 @@ Electromagnetic waves are usually reflected and refracted and therefore take dif
 
 
 
-\part{Design of a VLC system}
+\chapter{Design of a VLC system}
 
-\chapter{Design of the receiver}
+\section{Design of the receiver}
 
 Most of the photoreceiver on the market are designed to be used in laboratory. They are of very good quality, but also big and expensive. The goal is to design a little receiver that could be integrated to the existing circuit.
 For this, we will be using an Arduino nano programmed in C.
 
-\section{Problem}
+
+
+\subsection{Transimpedance amplifier}
 
 At the center of an optical receiver is a photodiode. The problem is that a photodiode gives a current proportional to the illumination, and currents are not as easy to manipulate as voltages. The solution is to put a transimpedance amplifier after the diode.
 
@@ -178,45 +180,71 @@ The capacitor$ C_f$ is needed because the photodiode can be seen as a current so
 
 The value of $R_f$ determines the gain of the circuit. While the value of $C_f$ determines its bandwidth. To determine a correct value of $C_f$, a good approximation is $$C_f \times R_f = C_{in} \times R_{in}$$ where $C_{in}$ and $R_{in}$ are the input capacitance and resistance of the operational amplifier.
 
-\section{Application}
-
 With a light emitting a few thousands lux towards the receiver, in order to get an output between 0V and 5V, a $R_f = 1M\Omega$ is well suited.
  The operational amplifier used is a LM741 with $C_{in} = 10pF$ and $R_{in} = 1M\Omega$. Thus, in order to have a working circuit at around 1kHz, we take $C_f = 10pF$.
 With these values, the output is around 4V. ?
 
+\subsection{DC centering}
 
 
 
 
 
 
+\section{Simple text transfer}
 
-
-
-
-
-\chapter{Simple text transfer}
-
-\section{Modulation}
+\subsection{Modulation}
 
 The modulation used is 4PAM.
+It means that there are 4 possible symbols, each representing 2 bits.
 
-\section{Protocol}
+\begin{center}
+\begin{tabular}{c|c|c}
+Symbol&Bits&Value\\
+\hline
+0&00&-3\\
+1&01&-1\\
+2&10&+3\\
+3&11&+1\\
+\end{tabular}
+\end{center}
 
-Example for a "Hello" message:
+It is important to use Gray Code because the only way message integrity is checked is by computing the parity bits.
 
+\subsection{Protocol}
+
+Example of an "Hello" message:
+
+\begin{center}
 \begin{tabular}{ccccc|l}
 0&0&0&0&0&No message\\
 0&1&2&3&2&Preamble\\
 3&3&3&3&3&Start of Frame\\
-1&0&2&0&0&H\\
-1&2&1&1&0&e\\
-1&2&3&0&0&l\\
-1&2&3&0&0&l\\
-1&2&3&3&0&o\\
+1&0&2&0&0&"H"\\
+1&2&1&1&0&"e"\\
+1&2&3&0&0&"l"\\
+1&2&3&0&0&"l"\\
+1&2&3&3&0&"o"\\
 0&0&0&0&2&End of Frame\\
 0&0&0&0&0&No message\\
 \end{tabular}
+\end{center}
+
+The stream is divided into frames, which are divided in words of 5 symbols (10 bits).
+
+ Each frame starts with a preamble, which is here to let the receiver synchronize with the signal phase.
+
+Then there is a SOF (start of frame) which is a series of five 3 that marks the beginning of the message. The SOF is the only word that has a 3 in last position, making it easily detectable.
+
+Then there is the payload, which is composed of the message, intercalated with parity bits. More precisely, each word is composed of 4 symbols which form a byte, and a 5th symbol, that acts as a parity bit by taking the values 0 or 1 in such a way that there is always an even number of bits "1" in a word.
+For example, "H" is 01 00 10 00. There already is an even number (2) of "1", so we add 00 at the end, all of which, translated into symbols, gives 10200.
+
+Finally, there is an End of Frame (EOF), which ends with a 2 and thus marks the end of the message.
+
+
+
+
+
 
 
 
@@ -244,27 +272,27 @@ Boring or not boring ?
 
 \section{loop.cpp}
 
-\lstinputlisting{../projet/loop.cpp}
+\lstinputlisting{../project/loop.cpp}
 
 \section{define.h}
 
-\lstinputlisting{../projet/define.h}
+\lstinputlisting{../project/define.h}
 
 \section{signal.h}
 
-\lstinputlisting{../projet/signal.h}
+\lstinputlisting{../project/signal.h}
 
 \section{signal.cpp}
 
-\lstinputlisting{../projet/signal.cpp}
+\lstinputlisting{../project/signal.cpp}
 
 \section{tools.h}
 
-\lstinputlisting{../projet/tools.h}
+\lstinputlisting{../project/tools.h}
 
 \section{tools.cpp}
 
-\lstinputlisting{../projet/tools.cpp}
+\lstinputlisting{../project/tools.cpp}
 
 
 
