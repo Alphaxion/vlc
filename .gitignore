@@ -1,2 +1,5 @@
 /*
 !/project
+!/report
+/report/*
+!/report/report.tex
