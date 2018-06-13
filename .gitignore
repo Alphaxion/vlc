@@ -1,5 +1,9 @@
 /*
 !/project
+!/hw
+/hw/*
+!/hw/hw.sch
+!/emitter
 !/report
 /report/*
 !/report/report.tex

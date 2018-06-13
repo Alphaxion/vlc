@@ -69,7 +69,7 @@ void detect_phase() {
   else if (sp.last_symbol!=detect_symbol()) {
     sp.last_time = micros()-PERIOD/2;
     sp.state = S_DETECT_SOF;
-    dbg("phase detected");
+    //dbg("phase detected");
   }
 }
 
@@ -83,7 +83,7 @@ void detect_sof() {
   if (sp.sym_pos==5) {
     sp.sym_pos = 0;
     sp.state = S_RECEIVE_MSG;
-    dbg("sof detected");
+    //dbg("sof detected");
   }
 }
 
@@ -95,12 +95,12 @@ void receive_msg() {
     sp.sym_pos = 0;
     // message reception complete
     if (sp.symbols[LINE_LENGTH-1]==S2){
-      dbg("end of message");
+      //dbg("end of message");
       sp.state = S_STOP;
     }
     else {
       char b = syms_to_byte(sp.symbols);
-      dbg(b);
+      //dbg(b);
       if(byte_parity(b)!=sp.symbols[LINE_LENGTH-1]) {
         sp.corrupted = 1;
       }
