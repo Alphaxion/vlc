@@ -13,7 +13,20 @@ void setup() {
 }
 
 void loop() {
-  send_message("Hello");
+  char msg[MAX_DATA_SIZE];
+  int i = 0;
+  dbg("waiting for message");
+  while(1) {
+    while(Serial.available()==0);
+    char key = Serial.read();//keypad.waitForKey();
+    if(key=='#' || i==MAX_DATA_SIZE) {
+      break;
+    }
+    msg[i] = key;
+    dbg(key);
+    i++;
+  }
+  send_message(msg);
   delay(10*PERIOD/1000);
 }
 
