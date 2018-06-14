@@ -17,8 +17,8 @@ void loop() {
   int i = 0;
   dbg("waiting for message");
   while(1) {
-    while(Serial.available()==0);
-    char key = Serial.read();//keypad.waitForKey();
+    //while(Serial.available()==0);
+    char key = keypad.waitForKey();//Serial.read();//
     if(key=='#' || i==MAX_DATA_SIZE) {
       break;
     }

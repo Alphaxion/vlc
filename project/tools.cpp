@@ -4,5 +4,5 @@
 #include "define.h"
 #include "tools.h"
 
-LiquidCrystal lcd = LiquidCrystal(8, 9, 4, 5, 6, 7);
+LiquidCrystal lcd = LiquidCrystal(12, 11, 5, 4, 3, 2);
 

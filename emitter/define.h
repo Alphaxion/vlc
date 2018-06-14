@@ -14,7 +14,7 @@
 /********
 *EMITTER*
 ********/
-#define SEND_PIN 3
+#define SEND_PIN 11
 
 // in us
 #define PERIOD 1000
