@@ -41,12 +41,14 @@ void send_message(char* msg) {
     //dbg(frame[i]);
     i++;
   }
-  dbg("message sent");
+  //dbg("message sent");
 }
 
 void send_symbol(int symbol) {
   static const int t[] = {V0, V1, V2, V3};
+  //dbg(t[symbol]);
   analogWrite(SEND_PIN, t[symbol]);
+  //analogWrite(SEND_PIN, t[1]);
 }
 
 void byte_to_syms(int* syms, char b) {

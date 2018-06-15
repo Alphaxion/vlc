@@ -1,5 +1,5 @@
-/** @file notino.cpp
-    @brief remplace le .ino
+/** @file loop.cpp
+    @brief main file
 */
 
 #include "define.h"

@@ -14,10 +14,10 @@
 /********
 *EMITTER*
 ********/
-#define SEND_PIN 11
+#define SEND_PIN 9
 
 // in us
-#define PERIOD 1000
+#define PERIOD 10000//100Hz
 
 //Symbols and corresponding values
 #define S0 0
