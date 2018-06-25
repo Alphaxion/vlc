@@ -19,16 +19,16 @@
 // 10 sec (too much)
 #define TIMEOUT 10000000
 
-// in us // 1kHz
-#define PERIOD 1000
+// in us
+#define PERIOD 10000//100Hz
 
 //Symbols and thresholds
 #define S0 0
-#define TH1 256
+#define TH1 102//256
 #define S1 1
-#define TH2 512
+#define TH2 307//512
 #define S2 2
-#define TH3 768
+#define TH3 467//768
 #define S3 3
 
 #define MAX_DATA_SIZE 32// bytes

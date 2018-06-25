@@ -8,15 +8,8 @@
 \usepackage{graphicx}
 \graphicspath{{img/}}
 
-\title{Car to car communication using visible light}
+\title{Visible Light Communication System}
 \author{Hugo}
-
-
-
-
-
-
-
 
 
 
@@ -28,16 +21,11 @@
 
 
 
-
-
-
-
-
 \chapter{Introduction}
 
-\section{About Northumbria University}
+This chapter is a presentation of Northumbria University as well as the researchers I have worked with, followed by an explanation of the advantages and drawbacks of visible light communication (VLC), and its most usual applications.
 
-This chapter aims at presenting the environment in which this internship has taken place.
+\section{About Northumbria University}
 
 \subsection{Newcastle}
 
@@ -45,64 +33,45 @@ Northumbria University is located in Newcastle upon Tyne in the North East of En
 
 \subsection{Northumbria University}
 
-Northumbria University is a former Polytechnic, established in 1969, and became the University of Northumbria in 1992. Northumbria University employs more than 3,200 people and offers approximately 500 study programmes. The university has two large campuses, City Campus East and City Campus West.
+Northumbria University is a former Polytechnic, established in 1969, and became the University of Northumbria in 1992. It employs more than 3,200 people and offers approximately 500 study programmes. It has two large campuses, City Campus East and City Campus West.
 
-City Camus East is home to the Schools of Law, Design, and the Newcastle Business School. City Campus West is home to the Schools of Arts and Social Sciences, Built and Natural Environment, Computing, Engineering and Information Sciences and Life Sciences.
+City Campus East is home to the Schools of Law, Design, and the Newcastle Business School. City Campus West is home to the Schools of Arts and Social Sciences, Built and Natural Environment, Computing, Engineering and Information Sciences and Life Sciences.
 
 I worked in the Faculty of Engineering and Environment, more precisely in the Department of Mathematics, Physics and Electrical Engineering. This department focuses on a wide range of issues, from statistics to complex and nonlinear phenomena, astrophysics to smart materials, and communications to renewable energy.
 
 \subsection{Optical communications research group}
 
-The Optical Communications Research Group (OCRG) is one of the few leading research groups in the UK and EU currently working on optical communications.
-In 2011, they presented their first experimental demonstration of a VLC link using organic LEDs. They reached a potential data rate of 2.15 Mb/s.
-
-The academic staff in this group are Professor Fary Ghassemlooy, Dr Hoa Le Minh and Dr Wai Pang Ng.
 My supervisor for this internship was Dr Hoa Le Minh. He is specialized in photonic networks, mobile and adhoc networks, smartphone technology, organic optical communications and, of course, optical wireless communications.
+He is  is a member of the Optical Communications Research Group (OCRG), which is one of the few leading research groups in the UK and EU currently working on optical communications. In 2011, they presented their first experimental demonstration of a VLC link using organic LEDs, where they reached a potential data rate of 2.15 Mb/s.
 
-
-
-
-
-
-
-
-
+Krishna, Sandeep, Zun ?
 
 
 
 \section{Context}
 
-This chapter presents the reason why visible light communication (VLC) is the preferred solution and how it could be useful in car to car communications.
-
 \subsection{Existing data transfer technologies}
 
-In the last years, there has been more and more portable devices and the quantities of data to transfer between them has also grown drastically. However, creating ad hoc networks between portable devices is not a simple task. Short-range data interchange links can be created with various technologies.
+In the last years, the density of portable devices has grown drastically, as well as the quantity of data to transfer between them. This of course creates an ever-augmenting need for short-range networks between portable devices.  These can be designed using various technologies.
 
-Direct electrical connections with wires have many drawbacks : they are expensive, heavy, can break easily and are generally not convenient at all.
+Direct electrical connections, using electrical wires or fiber optics have too many drawbacks : they are expensive, heavy, can break easily and, more importantly, are very unconvenient to use.
 
-Wireless radio frequency communications, as used in 4G networks, also present several problems : RF circuitry is quite expensive and, more importantly, these channels are broadcast, which means that several ad hoc networks at the same location would be very hard to achieve wihtout many interferences.
+Wireless radio frequency communications, as used in 4G networks, also present several problems : RF circuitry is quite expensive and, more importantly, these channels are broadcast, which means that several ad hoc networks at the same location would be very hard to achieve wihtout many interferences. Moreover they require quite expensive licensing fees.
 
-Wireless optical links, however, do not require RF circuitry but cheap LEDs, are not licensed, unlike the RF band, so there are no licensing fees, can be easily contained by placing opaque boundaries. Their only problem compared to RF links for short range communications is that mobility is very limited since any opaque boundary would cut the link.
+Wireless optical links, however, do not require RF circuitry but cheap LEDs. They can be easily contained and are generally short range so several networks can coexist in the same location quite easily. They have some limitations compared to RF links though. For example, for short range communications, mobility is very limited since they are stopped by any opaque boundary. Moreover, ambient noise is very intense since any source of light, including the sun, is a source of noise for the system.
 
-\subsection{Application to car to car communications}
+\subsection{Application of VLC}
+
+\subsubsection{Outdoor communication}
+
+With autonomous vehicles being just around the corner, it is more and more important for vehicles to have a way to communicate with each other. VLC seems the most appropriate system to exchange data in automotive applications.
+Indeed, LEDs are already used in traffic infrastructures and in the vehicle lightning system, which will greatly facilitate the integration of VLC technology. Moreover, since VLC is a line of sight technology, there would be no interferences between communication channels, even in high traffic density.
 
 Wireless communications between vehicles could greatly improve security on the road. For example, safety messages could be transmitted from the traffic infrastructure to the vehicles and between the vehicles. Moreover, this system could increase the vehicle awareness of its surroundings or facilitate traffic flow.
 
-Since LEDs are already used in traffic infrastructures and in the vehicle lightning system, VLC seems the most appropriate system to exchange data in automotive applications. Moreover, since VLC is a line of sight technology, there would be no interferences even in high traffic density.
+\subsubsection{Indoor communication}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+Indoor wireless optical communication is seen as complimentary to RF links rather than a replacement. Indeed, RF links will always allow for greater mobility. However, VLC really excels in very short-range and high-speed communication, for example between two devices in the same room, like a phone or a remote control, and an automated door or a speaker.
 
 
 
@@ -112,100 +81,64 @@ This chapter introducts the concepts necessary to understand how a VLC system wo
 
 \subsection{Architecture}
 
-A VLC system consists of an emitter that modulates the light produced by a LED and a receiverthat extract the modulated signal from the light detected by a photodiode. They are connected by a VLC channel which is a source of noise and attenuation.
+A VLC system consists of an emitter that modulates the light produced by a LED and a receiver that extract the modulated signal from the light detected by a photodiode. They are connected by a VLC channel which is a source of noise and attenuation.
+
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.4]{system}
+\end{figure}
+
+\subsection{Channel}
+
+The channel contains numerous sources of optical noise, like the sun, artificial lights, or even rain or snow. These, together with the low signal especially at long distances, affect the SNR.
+
+Optical channels are however free from destructive interferences sometimes caused by reflection and refraction, unlike RF channels. Indeed, the antenna is way bigger than the wavelength of the signal. Temporal dispersion of the signal, however, remains a problem.
 
 \subsection{Emitter}
 
-The emitter transforms data into a frame that can be sent by light. The emitter must be capable to emit light and to transfer data at the same time, without inducing flickering.
+The emitter transforms binary data into an electric signal encoding a frame of symbols, that can be sent using light. Moreover, since the light emitting device will often be used for other purpose, like illumination, the emitter must be capable to transfer data on top of a constant light, without inducing visible flickering.
 
-Given that the frequency of visible light is of the order of 100-1000 THz, the standard modulations like frequency or phase modulation cannot be used. Instead, optical channels are intensity modulated. The optical intensity, or radiant intensity, is the optical power emitted per solid angle. A solid angle is used to mesure parts of a sphere. It can be seen as the generalisation of a 2D angle in 3D, and its unit is the steradian ($sr$). The unit of the optical intensity is $W/sr$. An important constraint of optical channels is that the signal is an optical intensity and thus is nonnegative.
+Given that the frequency of visible light is of the order of 100-1000 THz, the standard modulations like frequency or phase modulation cannot be used. Instead, optical channels are intensity modulated. The optical intensity is the optical power emitted per solid angle (a solid angle can be seen as the generalisation of a 2D angle in 3D). An important constraint of optical channels is that the signal is an optical intensity and thus is nonnegative.
 
 Mainly 2 types of light emitting devices are used for these applications.
-The first one is the LED: it is a junction diode usually emitting at around 850 nm.
-The second one is the laser diode (LD): it produces an intense beam of light which is monochromatic, coherent and collimated.
 
-LDs can operate at pulserates in the GHz range, while LEDs are limited to the MHz range. A LD ages faster and its characteristics change more with temperature. Because of this, a circuit is required to stabilize the LD. Moreover, LEDs are way cheaper to produce. Finally, LDs can be dangerous for the eyes and filters must be used to diffuse the output light. For most of the applications, LEDs are prefered for their simplicity.
+-light emitting diode (LED): it is a standard junction diode and is usually emitting at around 850 nm.
+
+-laser diode (LD): it produces an intense beam of light which is monochromatic, coherent and collimated.
+LDs can operate at pulserates in the GHz range, while LEDs are limited to the MHz range. A LD ages faster and its characteristics change more with temperature. Because of this, a circuit is required to stabilize the LD. Finally, LDs can be dangerous for the eyes and filters must be used to diffuse the output light.
+
+For most of the applications, LEDs are prefered for their simplicity and their price.
 
 \subsection{Receiver}
 
 The receiver transforms the light into an electrical signal then demodulate it. The receiver has the most influence on the performances of the VLC system because it determines the communication range. It is subject to many interferences caused by ambient lights so a filter is often used to discard the frequency that are not sent by the LED. Narrowing the field of view of the receiver is another possibilty to increase the SNR.
 
 There are 2 types of photodiodes that can be used as a receiver:
-With PIN photodiodes, the photocurrent is proportional to the optical power below 5 Ghz.
-Avalanches photodiodes (APD) have a photocurrent greater than 1 because of the avalanche, of the order of $10^2$ to $10^4$, which allows for longer distances between the emitter and the detector. However, the avalanche creates shot noise. Moreover, the gain is non-linear thus additional circuitry is required. As APDs require higher voltage (at least 30V), they are not suitable for portable devices.
+
+-PIN photodiodes, with which the photocurrent is proportional to the optical power below 5 Ghz.
+
+-Avalanches photodiodes (APD), which have a photocurrent greater than 1 because of the avalanche, of the order of $10^2$ to $10^4$, which allows for longer distances between the emitter and the detector. However, the avalanche creates shot noise. Moreover, the gain is non-linear thus additional circuitry is required. As APDs require higher voltage (at least 30V), they are not suitable for portable devices.
 
 Most indoors links use PIN photodiodes. Outdoors links that require better sensivity may use APDs instead.
-
-\subsection{Channel}
-
-The channel contains numerous sources of optical noise, like the sun, artificial lights, or even rain or snow. These, together with the low signal especially at long distances, affect the SNR.
-
-Electromagnetic waves are usually reflected and refracted and therefore take different paths to reach the detector : This can cause destructive interferences called multipath fading. However, this is not a problem with optical communications because the antenna is way bigger than the wavelength of the signal. Temporal dispersion of the signal, however, remains a problem.
-
-
-
-
-
-
-
-
-
-
 
 
 
 \chapter{Design of a VLC system}
 
-\section{Design of the emitter}
-
-\subsection{Generation of the signal}
-
-\subsection{Output filtering}
-
-As the output is generated by PWM, it must be filtered before being sent to the diode in order to remove the variations created by the PWM. A simple low pass RC filter is used for this.
-The resistor is $10k\Omega$
-
-\section{Design of the receiver}
-
-Most of the photoreceiver on the market are designed to be used in laboratory. They are of very good quality, but also big and expensive. The goal is to design a little receiver that could be integrated to the existing circuit.
-For this, we will be using an Arduino nano programmed in C.
-
-
-
-\subsection{Transimpedance amplifier}
-
-At the center of an optical receiver is a photodiode. The problem is that a photodiode gives a current proportional to the illumination, and currents are not as easy to manipulate as voltages. The solution is to put a transimpedance amplifier after the diode.
-
-A transimpedance amplifier converts a current into a voltage. It is a very simple circuit, composed only of an operational amplifier and a resistor.
-
-\begin{figure}[h]
-\centering
-\includegraphics[scale=0.5]{transimpedance_amplifier}
-\end{figure}
-
-Here, when $V_b = 0$, $V_{out}$ is proportional to $I_p$ and the relation between them is $$V_{out} = - R_f \times I_p$$
-In order to have a positive output, the photodiode could be put the other way.
-The capacitor$ C_f$ is needed because the photodiode can be seen as a current source and a capacitor. Thus, in order to have a stable circuit, a capacitor $C_f$ is needed.
-
-The value of $R_f$ determines the gain of the circuit. While the value of $C_f$ determines its bandwidth. To determine a correct value of $C_f$, a good approximation is $$C_f \times R_f = C_{in} \times R_{in}$$ where $C_{in}$ and $R_{in}$ are the input capacitance and resistance of the operational amplifier.
-
-With a light emitting a few thousands lux towards the receiver, in order to get an output between 0V and 5V, a $R_f = 1M\Omega$ is well suited.
- The operational amplifier used is a LM741 with $C_{in} = 10pF$ and $R_{in} = 1M\Omega$. Thus, in order to have a working circuit at around 1kHz, we take $C_f = 10pF$.
-With these values, the output is around 4V. ?
-
-\subsection{DC centering}
-
-
-
-
-
+The goal of this internship is to design a VLC system, made of an emitter and receiver, that could transport data (e.g. text) through visible light.
+Concretely, the user should be able to type a text that would then be sent by the emitter to the receiver that would print it on a LCD.
 
 \section{Simple text transfer}
 
 \subsection{Modulation}
 
-The modulation used is 4PAM.
+The modulation used is Pulse Amplitude Modulation with 4 amplitude levels (4-PAM).
 It means that there are 4 possible symbols, each representing 2 bits.
+
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.6]{PAM4}
+\end{figure}
 
 \begin{center}
 \begin{tabular}{c|c|c}
@@ -221,6 +154,8 @@ Symbol&Bits&Value\\
 It is important to use Gray Code because the only way message integrity is checked is by computing the parity bits.
 
 \subsection{Protocol}
+
+There is a need for a protocol in order to indentify the beginning and the end of the message, and to check the parity values.
 
 Example of an "Hello" message:
 
@@ -252,26 +187,62 @@ Finally, there is an End of Frame (EOF), which ends with a 2 and thus marks the 
 
 
 
+\section{Design of the emitter}
+
+\subsection{Message input}
+
+Keypad
+
+\subsection{Generation of the signal}
+
+?
+
+\subsection{Output filtering}
+
+As the output is generated by PWM, it must be filtered before being sent to the diode in order to remove the variations created by the PWM. A simple low pass RC filter is used for this.
+The resistor is $10k\Omega$
 
 
 
+\section{Design of the receiver}
 
+Most of the photoreceiver on the market are designed to be used in laboratory. They are of very good quality, but also big and expensive. The goal is to design a little receiver that could be integrated to the existing circuit.
+For this, we will be using an Arduino nano programmed in C.
 
+\subsection{Transimpedance amplifier}
+
+At the center of an optical receiver is a photodiode. The problem is that a photodiode gives a current proportional to the illumination, and currents are not as easy to manipulate as voltages. The solution is to put a transimpedance amplifier after the diode.
+
+A transimpedance amplifier converts a current into a voltage. It is a very simple circuit, composed only of an operational amplifier and a resistor.
+
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.7]{transimpedance_amplifier}
+\end{figure}
+
+Here, when $V_b = 0$, $V_{out}$ is proportional to $I_p$ and the relation between them is $$V_{out} = - R_f \times I_p$$
+In order to have a positive output, the photodiode could be put the other way.
+The capacitor$ C_f$ is needed because the photodiode can be seen as a current source and a capacitor. Thus, in order to have a stable circuit, a capacitor $C_f$ is needed.
+
+The value of $R_f$ determines the gain of the circuit. While the value of $C_f$ determines its bandwidth. To determine a correct value of $C_f$, a good approximation is $$C_f \times R_f = C_{in} \times R_{in}$$ where $C_{in}$ and $R_{in}$ are the input capacitance and resistance of the operational amplifier.
+
+With a light emitting a few thousands lux towards the receiver, in order to get an output between 0V and 5V, a $R_f = 1M\Omega$ is well suited.
+ The operational amplifier used is a LM741 with $C_{in} = 10pF$ and $R_{in} = 1M\Omega$. Thus, in order to have a working circuit at around 1kHz, we take $C_f = 10pF$.
+With these values, the output is around 4V. ?
+
+\subsection{DC centering}
+
+?
+
+\subsection{Message output}
+
+?
 
 
 
 \chapter{Analysis of the internship}
 
 Boring or not boring ?
-
-
-
-
-
-
-
-
-
 
 
 
@@ -333,27 +304,22 @@ Boring or not boring ?
 
 
 
-
-
-
-
-
-
-
-
-
-
 \begin{thebibliography}{9}
 
 \bibitem{wocs}
 Steve Hranilovic.
-\textit{Wireless Optical Communication Systems}.
+\textit{Wireless Optical Communication Systems.}
 Springer, 2004.
 
 \bibitem{these}
 Alin Cailean.
 \textit{Etude et réalisation d’un système de communications par lumière visible (VLC/LiFi). Application au domaine automobile.}
 Université de Versailles Saint-Quentin en Yvelines, 2014.
+
+\bibitem{pam4}
+Winston Way.
+\textit{PAM-4: A Key Solution For Next-Generation Short-Haul Optical Fiber Links.}
+2015.
 
 \end{thebibliography}
 

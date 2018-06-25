@@ -17,7 +17,7 @@ SignalProcessing::SignalProcessing() {
 }
 
 SignalProcessing sp = SignalProcessing();
-/*
+
 int detect_symbol() {
   int val = analogRead(DETECT_APIN);
   int sym;
@@ -35,7 +35,7 @@ int detect_symbol() {
   }
   return sym;
 }
-*/
+/*
 int detect_symbol() {
   static const int s[] = {
   0,0,0,0,0,
@@ -53,7 +53,7 @@ int detect_symbol() {
   int i = (micros()/PERIOD)%len;
   return s[i];
 }
-
+*/
 int detect_next_symbol() {
   while(micros()-sp.last_time<PERIOD);
   sp.last_time += PERIOD;
