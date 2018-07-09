@@ -128,17 +128,15 @@ Most indoors links use PIN photodiodes. Outdoors links that require better sensi
 The goal of this internship is to design a VLC system, made of an emitter and receiver, that could transport data (e.g. text) through visible light.
 Concretely, the user should be able to type a text that would then be sent by the emitter to the receiver that would print it on a LCD.
 
-\section{Simple text transfer}
+\section{Simple data transfer}
+
+The first thing to decide is how to transform data into an analog signal. In order to achieve this, a modulation scheme and a protocol must be chosen.
 
 \subsection{Modulation}
 
-The modulation used is Pulse Amplitude Modulation with 4 amplitude levels (4-PAM).
-It means that there are 4 possible symbols, each representing 2 bits.
+The modulation used is Pulse Amplitude Modulation with 4 amplitude levels (4-PAM). It is one of the most widely used modulation for visible light communication. It is quite easy to implement, and is two to four times faster than BPSK (e.g. Manchester coding), albeit less robust because no clock recovery is possible.
 
-\begin{figure}[h]
-\centering
-\includegraphics[scale=0.6]{PAM4}
-\end{figure}
+With this modulation, there are 4 possible symbols, each representing 2 bits.
 
 \begin{center}
 \begin{tabular}{c|c|c}
@@ -151,6 +149,11 @@ Symbol&Bits&Value\\
 \end{tabular}
 \end{center}
 
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.6]{PAM4}
+\end{figure}
+
 It is important to use Gray Code because the only way message integrity is checked is by computing the parity bits.
 
 \subsection{Protocol}
@@ -158,6 +161,9 @@ It is important to use Gray Code because the only way message integrity is check
 There is a need for a protocol in order to indentify the beginning and the end of the message, and to check the parity values.
 
 Example of an "Hello" message:
+
+
+For hardware reasons, the signal frequency is limited to 100Hz, thus this message would take 616ms to be sent.
 
 \begin{center}
 \begin{tabular}{ccccc|l}
@@ -174,16 +180,25 @@ Example of an "Hello" message:
 \end{tabular}
 \end{center}
 
-The stream is divided into frames, which are divided in words of 5 symbols (10 bits).
+The stream is divided into frames, which are divided in words of 5 symbols (10 bits). A frame can contain by design a maximum of 16 bytes of data.
 
- Each frame starts with a preamble, which is here to let the receiver synchronize with the signal phase.
+\subsubsection{Preamble}
 
-Then there is a SOF (start of frame) which is a series of five 3 that marks the beginning of the message. The SOF is the only word that has a 3 in last position, making it easily detectable.
+Each frame starts with a preamble: 01232. It is a fixed word which let the receiver synchronize with the signal phase.
+
+\subsubsection{Start of frame}
+
+Then there is a start of frame (SOF): 33333. It is a fixed word which marks the beginning of the message. The SOF is the only word that has a 3 in last position, thus is the only location in the message where there can be five 3 in a row, making the detection of the beginning of the message very straightforward.
+
+\subsubsection{Payload}
 
 Then there is the payload, which is composed of the message, intercalated with parity bits. More precisely, each word is composed of 4 symbols which form a byte, and a 5th symbol, that acts as a parity bit by taking the values 0 or 1 in such a way that there is always an even number of bits "1" in a word.
+
 For example, "H" is 01 00 10 00. There already is an even number (2) of "1", so we add 00 at the end, all of which, translated into symbols, gives 10200.
 
-Finally, there is an End of Frame (EOF), which ends with a 2 and thus marks the end of the message.
+\subsubsection{End of frame}
+
+Finally, there is an End of Frame (EOF): 00002. It is a fixed word which, contrary to the payload, ends with a 2 and marks the end of the message.
 
 
 
